@@ -1,0 +1,7 @@
+FROM postgres:14.7
+ENV POSTGRES_DB=nba_stats
+ENV POSTGRES_USER=nba_user
+ENV POSTGRES_PASSWORD=nba_password
+COPY ./src/main/resources/db/schema.sql /docker-entrypoint-initdb.d/01-schema.sql
+COPY ./src/main/resources/db/data.sql /docker-entrypoint-initdb.d/02-data.sql
+EXPOSE 5432
